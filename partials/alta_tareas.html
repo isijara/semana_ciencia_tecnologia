@@ -1,0 +1,48 @@
+
+<div id="altaTareas">
+
+
+    <form class="form-horizontal" ng-submit="agregarTarea()">
+
+        <input type="text" ng-model="tareaParaAgregar">
+        <select ng-model="prioridad" >
+            <option value="Alta">Alta</option>
+            <option value="Media">Media</option>
+            <option value="Baja">Baja</option>
+        </select>
+        <input  type="button" value="Agregar Tarea" class="btn btn-primary" ng-click="agregarTarea()" ng-disabled="!tareaParaAgregar">
+        <button value="Buscar" class="btn btn-success"> <i class="icon-search icon-white"> </i> Filtrar</button>
+
+    </form>
+
+
+    <table class="table table-bordered">
+        <tr>
+            <th>Tarea </th>
+            <th>Prioridad</th>
+            <th>Acciones</th>
+
+        </tr>
+
+        <tr ng-repeat="tarea in tareasAgregadas">
+
+            <td>
+                {{tarea.nombre}}
+            </td>
+            <td>
+                {{tarea.prioridad}}
+            </td>
+            <td>
+
+                <button class="btn btn-danger"  ng-click="eliminarTarea($index)"><i class="icon-trash icon-white" ></i> Eliminar </button>
+                <button class="btn btn-primary" ng-click="terminarTarea($index)"><i class="icon-ok icon-white" ></i> Terminar</button>
+                <a class="btn btn-warning" href="#/editar/{{$index}}" ><i class="icon-pencil icon-white" ></i> Editar</a>
+            </td>
+
+        </tr>
+
+
+    </table>
+
+
+</div>
